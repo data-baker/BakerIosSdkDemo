@@ -34,7 +34,7 @@
             cell.textLabel.text = @"语音合成在线";
             break;
         case 1:
-            cell.textLabel.text = @"语音合成离线";
+            cell.textLabel.text = @"语音识别在线";
             break;
         case 2:
             cell.textLabel.text = @"语音识别";
