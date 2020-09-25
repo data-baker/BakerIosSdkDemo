@@ -32,8 +32,7 @@
     // Do any additional setup after loading the view.
     
     if (self.type == DBDemoTypeTTS) {
-        self.clientIdText.text = @"e2d17fce-f69a-4b78-bbe5-7fef824a77c2";
-        self.clientSecretText.text = @"ZTZlOTMyMzAtMThlZS00M2ZjLWJhMTktYTQ2NjBhZTE3Yzk0";
+        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *TTSclientId = [defaults valueForKey:@"TTSclientId"];
         NSString *TTSclientSecret = [defaults valueForKey:@"TTSclientSecret"];
@@ -43,8 +42,7 @@
         }
         [self.authorizationBtn addTarget:self action:@selector(gotoTTS) forControlEvents:UIControlEventTouchUpInside];
     }else {
-        self.clientIdText.text = @"3187ba62-e58d-4bf7-b7be-71252b6d4612";
-        self.clientSecretText.text = @"MmMzNTA2YTMtZjUyOC00MjcxLTg5ZTItMGMxNjQxOGM4ZGVm";
+        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *TTSclientId = [defaults valueForKey:@"ASRclientId"];
         NSString *TTSclientSecret = [defaults valueForKey:@"ASRclientSecret"];
