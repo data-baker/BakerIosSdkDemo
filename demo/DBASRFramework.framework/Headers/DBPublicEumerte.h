@@ -9,6 +9,22 @@
 #ifndef DBPublicEumerte_h
 #define DBPublicEumerte_h
 
+
+typedef NS_ENUM(NSUInteger, DBASRErrorState){
+    DBErrorStateCodeClientId    = 13190001, // 缺少ClientId
+    DBErrorStateCodeSecret      = 13190002, // 缺少Secret
+    DBErrorStateCodeToken       = 13190003, // token获取失败
+    DBErrorNetworkUnusabel      = 13190004, // 本地网络不可用
+    DBErrorNotConnectToServer   = 13190005, // 网络连接失败
+    DBErrorStateSpeechShort     = 13190006, // 声音太短
+    DBErrorStateNoSpeech        = 13190007, // 没有说话
+    DBErrorStateSpeechUnKnown   = 13190008, // 录音出现未知错误
+    DBErrorStateRecordPermission= 13190009, // 麦克风错误
+    DBErrorStateVADInit         = 13190010, // VAD初始化错误
+    DBErrorStateVADFailure      = 13190011, // VAD识别失败
+    DBErrorStateVADend          = 13190012, // vad关闭错误
+};
+
 // 枚举 - 语音识别状态
 typedef NS_ENUM (NSUInteger,DBVoiceRecognitionClientStatus){
     DBVoiceRecognitionClientStatusNone = 0,                  // 空闲
@@ -41,13 +57,6 @@ typedef NS_ENUM (NSUInteger,DBNetwokingState) {
 typedef NS_ENUM(NSUInteger, DBAudioSampleRate){
     DBAudioSampleRate16K=16000, // 16k的采样率
     DBAudioSampleRate8K=8000, // 8K的采样率
-};
-
-
-
-typedef NS_ENUM(NSUInteger, DBASRiOSErrorState){
-    DBErrorStateVADInit         = 3020001, // VAD初始化错误
-    DBErrorStateVADend          = 3020002, // vad关闭错误
 };
 
 typedef NS_ENUM(NSUInteger,DBRecognizeType) {

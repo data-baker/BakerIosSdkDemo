@@ -14,6 +14,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^DBMessageHandler)(BOOL ret,NSString * message);
+
 @interface DBSynthesizerManager : NSObject
 
 @property(nonatomic,weak)id <DBSynthesizerManagerDelegate> delegate;
@@ -28,8 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,copy)NSString * ttsSdkVersion;
 
-/// 指定初始化方法，每次调用该方法会生成一个新的合成对象,不是单例
-+ (DBSynthesizerManager *)instance;
 
 /// 鉴权方法
 - (void)setupClientId:(NSString *)clientId clientSecret:(NSString *)clientSecret handler:(DBMessageHandler)handler;

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B06E1A0251D8D31000D1AAB /* DBCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B06E19F251D8D31000D1AAB /* DBCommon.framework */; };
-		8B06E1A2251D8D42000D1AAB /* DBASRFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B06E1A1251D8D42000D1AAB /* DBASRFramework.framework */; };
 		8B2806D025109920003725DD /* DBTTSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2806CF25109920003725DD /* DBTTSVC.m */; };
-		8B2806D62510AB9B003725DD /* DBFlowTTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B2806D42510AB9A003725DD /* DBFlowTTS.framework */; };
+		8B68BA772534374D004EE66D /* DBCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B68BA762534374D004EE66D /* DBCommon.framework */; };
+		8B68BA7925343867004EE66D /* DBFlowTTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B68BA7825343867004EE66D /* DBFlowTTS.framework */; };
+		8B68BA7B253440BA004EE66D /* DBASRFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B68BA7A253440BA004EE66D /* DBASRFramework.framework */; };
 		8BA4562C24ED04A700798B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA4562B24ED04A700798B1F /* AppDelegate.m */; };
 		8BA4563224ED04A700798B1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA4563124ED04A700798B1F /* ViewController.m */; };
 		8BA4563524ED04A700798B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BA4563324ED04A700798B1F /* Main.storyboard */; };
@@ -22,11 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B06E19F251D8D31000D1AAB /* DBCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBCommon.framework; sourceTree = "<group>"; };
-		8B06E1A1251D8D42000D1AAB /* DBASRFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBASRFramework.framework; sourceTree = "<group>"; };
 		8B2806CE25109920003725DD /* DBTTSVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTTSVC.h; sourceTree = "<group>"; };
 		8B2806CF25109920003725DD /* DBTTSVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTTSVC.m; sourceTree = "<group>"; };
-		8B2806D42510AB9A003725DD /* DBFlowTTS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBFlowTTS.framework; sourceTree = "<group>"; };
+		8B68BA762534374D004EE66D /* DBCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBCommon.framework; sourceTree = "<group>"; };
+		8B68BA7825343867004EE66D /* DBFlowTTS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBFlowTTS.framework; sourceTree = "<group>"; };
+		8B68BA7A253440BA004EE66D /* DBASRFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBASRFramework.framework; sourceTree = "<group>"; };
 		8BA4562724ED04A700798B1F /* BiaobeiDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiaobeiDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BA4562A24ED04A700798B1F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8BA4562B24ED04A700798B1F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -48,9 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B2806D62510AB9B003725DD /* DBFlowTTS.framework in Frameworks */,
-				8B06E1A0251D8D31000D1AAB /* DBCommon.framework in Frameworks */,
-				8B06E1A2251D8D42000D1AAB /* DBASRFramework.framework in Frameworks */,
+				8B68BA7925343867004EE66D /* DBFlowTTS.framework in Frameworks */,
+				8B68BA772534374D004EE66D /* DBCommon.framework in Frameworks */,
+				8B68BA7B253440BA004EE66D /* DBASRFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,9 +60,9 @@
 		8BA4561E24ED04A700798B1F = {
 			isa = PBXGroup;
 			children = (
-				8B06E1A1251D8D42000D1AAB /* DBASRFramework.framework */,
-				8B06E19F251D8D31000D1AAB /* DBCommon.framework */,
-				8B2806D42510AB9A003725DD /* DBFlowTTS.framework */,
+				8B68BA7A253440BA004EE66D /* DBASRFramework.framework */,
+				8B68BA7825343867004EE66D /* DBFlowTTS.framework */,
+				8B68BA762534374D004EE66D /* DBCommon.framework */,
 				8BA4562924ED04A700798B1F /* BiaobeiDemo */,
 				8BA4562824ED04A700798B1F /* Products */,
 			);

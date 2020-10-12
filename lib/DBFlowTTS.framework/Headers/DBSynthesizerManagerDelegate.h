@@ -10,6 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger,DBTTSErrorState) {
+    DBErrorFailedCodeClientId    = 11190001, // 缺少ClientId
+    DBErrorFailedCodeSecret      = 11190002, // 缺少Secret
+    DBErrorFailedCodeToken       = 11190003, // token获取失败
+    DBErrorFailedCodeParameters  = 11190004, // 参数未设置
+    DBErrorFailedCodeText        = 11190005, // 合成文本内容为空
+    DBErrorFailedCodeVoiveName   = 11190006, // 发音人参数错误
+    DBErrorFailedCodeResultParse = 11190007, // 解析错误
+    DBErrorFailedCodeSynthesis   = 11190008, // 链接服务器失败
+};
+
 @protocol DBSynthesizerManagerDelegate <NSObject>
 
 /// 开始合成
