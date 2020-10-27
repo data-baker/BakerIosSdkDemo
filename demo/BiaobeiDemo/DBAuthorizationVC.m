@@ -8,7 +8,7 @@
 
 #import "DBAuthorizationVC.h"
 #import <DBFlowTTS/DBSynthesizerManager.h>
-#import "DBTTSVC.h"
+#import "DBTTSType.h"
 #import <DBASRFramework/DBRecognitionManager.h>
 #import "DBASRVC.h"
 @interface DBAuthorizationVC ()
@@ -30,6 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"授权";
     
     if (self.type == DBDemoTypeTTS) {
         
@@ -69,7 +71,7 @@
             [userDefaults synchronize];
             NSLog(@"鉴权成功");
             UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            DBTTSVC* tts = [secondStoryBoard instantiateViewControllerWithIdentifier:@"ttsDemo"];
+            DBTTSType* tts = [secondStoryBoard instantiateViewControllerWithIdentifier:@"DBTTSType"];
             tts.synthesizerManager = self.synthesizerManager;
             [self.navigationController pushViewController:tts animated:YES];
 

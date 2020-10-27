@@ -34,6 +34,9 @@ NSString * textViewText = @"标贝科技交互提供智能语音整体解决方�
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"语音合成在线";
+    
     self.textString = [textViewText mutableCopy];
     self.displayTextView.text = @"";
     [self addBorderOfView:self.textView];

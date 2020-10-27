@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8B2806D025109920003725DD /* DBTTSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2806CF25109920003725DD /* DBTTSVC.m */; };
+		8B46E3DC253D7FD500FB9B44 /* PCMDataPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B46E3DA253D7FD500FB9B44 /* PCMDataPlayer.m */; };
+		8B46E3DF253DBF2200FB9B44 /* DBTTSType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B46E3DE253DBF2200FB9B44 /* DBTTSType.m */; };
+		8B46E3E2253DC0FD00FB9B44 /* DBTTSNoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B46E3E1253DC0FD00FB9B44 /* DBTTSNoPlayer.m */; };
 		8B68BA772534374D004EE66D /* DBCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B68BA762534374D004EE66D /* DBCommon.framework */; };
 		8B68BA7925343867004EE66D /* DBFlowTTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B68BA7825343867004EE66D /* DBFlowTTS.framework */; };
 		8B68BA7B253440BA004EE66D /* DBASRFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B68BA7A253440BA004EE66D /* DBASRFramework.framework */; };
@@ -24,6 +27,12 @@
 /* Begin PBXFileReference section */
 		8B2806CE25109920003725DD /* DBTTSVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTTSVC.h; sourceTree = "<group>"; };
 		8B2806CF25109920003725DD /* DBTTSVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTTSVC.m; sourceTree = "<group>"; };
+		8B46E3DA253D7FD500FB9B44 /* PCMDataPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCMDataPlayer.m; sourceTree = "<group>"; };
+		8B46E3DB253D7FD500FB9B44 /* PCMDataPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCMDataPlayer.h; sourceTree = "<group>"; };
+		8B46E3DD253DBF2200FB9B44 /* DBTTSType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTTSType.h; sourceTree = "<group>"; };
+		8B46E3DE253DBF2200FB9B44 /* DBTTSType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTTSType.m; sourceTree = "<group>"; };
+		8B46E3E0253DC0FD00FB9B44 /* DBTTSNoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTTSNoPlayer.h; sourceTree = "<group>"; };
+		8B46E3E1253DC0FD00FB9B44 /* DBTTSNoPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTTSNoPlayer.m; sourceTree = "<group>"; };
 		8B68BA762534374D004EE66D /* DBCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBCommon.framework; sourceTree = "<group>"; };
 		8B68BA7825343867004EE66D /* DBFlowTTS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBFlowTTS.framework; sourceTree = "<group>"; };
 		8B68BA7A253440BA004EE66D /* DBASRFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBASRFramework.framework; sourceTree = "<group>"; };
@@ -85,8 +94,14 @@
 				8BA4563124ED04A700798B1F /* ViewController.m */,
 				8BA4564324ED190000798B1F /* DBAuthorizationVC.h */,
 				8BA4564424ED190000798B1F /* DBAuthorizationVC.m */,
+				8B46E3DD253DBF2200FB9B44 /* DBTTSType.h */,
+				8B46E3DE253DBF2200FB9B44 /* DBTTSType.m */,
+				8B46E3E0253DC0FD00FB9B44 /* DBTTSNoPlayer.h */,
+				8B46E3E1253DC0FD00FB9B44 /* DBTTSNoPlayer.m */,
 				8B2806CE25109920003725DD /* DBTTSVC.h */,
 				8B2806CF25109920003725DD /* DBTTSVC.m */,
+				8B46E3DB253D7FD500FB9B44 /* PCMDataPlayer.h */,
+				8B46E3DA253D7FD500FB9B44 /* PCMDataPlayer.m */,
 				8BFF76FC2518997B006E7141 /* DBASRVC.h */,
 				8BFF76FD2518997B006E7141 /* DBASRVC.mm */,
 				8BA4563324ED04A700798B1F /* Main.storyboard */,
@@ -169,10 +184,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BA4563224ED04A700798B1F /* ViewController.m in Sources */,
+				8B46E3DF253DBF2200FB9B44 /* DBTTSType.m in Sources */,
 				8BA4562C24ED04A700798B1F /* AppDelegate.m in Sources */,
+				8B46E3DC253D7FD500FB9B44 /* PCMDataPlayer.m in Sources */,
 				8BA4563D24ED04AB00798B1F /* main.m in Sources */,
 				8BFF76FE2518997B006E7141 /* DBASRVC.mm in Sources */,
 				8B2806D025109920003725DD /* DBTTSVC.m in Sources */,
+				8B46E3E2253DC0FD00FB9B44 /* DBTTSNoPlayer.m in Sources */,
 				8BA4564524ED190000798B1F /* DBAuthorizationVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

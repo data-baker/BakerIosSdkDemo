@@ -9,17 +9,26 @@
 #import "DBASRVC.h"
 #import <DBASRFramework/DBFileRecognizer.h>
 #import <DBCommon/DBCommonConst.h>
+#import <DBASRFramework/DBRawDataRecognizer.h>
 static NSString * recordFileName = @"record";
 
 @interface DBASRVC ()<DBVoiceRecognizeDelgate>
 
 /// 文件识别器
 @property(nonatomic,strong)DBFileRecognizer * fileRecognizer;
+/// 元数据识别器
+@property(nonatomic,strong)DBRawDataRecognizer * rawDataRecognizer;
 
 @property(nonatomic,strong)NSMutableData * recordData;
 @property(nonatomic,assign)NSInteger pcmIndex;
 @property (weak, nonatomic) IBOutlet UITextView *resultTextView;
 @property (weak, nonatomic) IBOutlet UITextView *statusTextView;
+
+@property (nonatomic) NSUInteger hasReadFileSize;
+@property (nonatomic) int sizeToRead;
+@property (nonatomic, retain) NSFileHandle *fileHandle;
+@property (nonatomic, retain) NSThread *fileReadThread;
+@property (nonatomic, retain) NSString *filePath;
 
 
 @end
@@ -53,9 +62,6 @@ static NSString * recordFileName = @"record";
 //开始识别
 - (IBAction)recordAction:(id)sender {
     [self startRecognize];
-#ifdef DevLog
-    [self randomOfVoiceRecognize];
-#endif
 }
 
 -  (void)startRecognize {
@@ -94,11 +100,82 @@ return parameters[@(code)];
 
 
 // MARK: 识别pcm的音频文件
-- (IBAction)recognizeFileAction:(id)sender {
+- (void)recognizeFileAction:(UIButton *)sender {
     self.resultTextView.text = @"";
     self.statusTextView.text = @"";
     [self.fileRecognizer startFileRecognitionWithDelegate:self];
 }
+
+- (void)recognizeFlowAction:(UIButton *)sender {
+    
+    int r = [self startDataRecognitionWithDelegate:self];
+    if (r == 0) {
+        NSLog(@"开启识别成功");
+    }else {
+        NSLog(@"开启识别失败");
+    }
+}
+
+- (int)startDataRecognitionWithDelegate:(id<DBVoiceRecognizeDelgate>)delegate
+{
+    NSString *filePath = [self getPcmFilePathWithFileName:recordFileName];
+    self.filePath = filePath;
+    if(![[NSFileManager defaultManager] fileExistsAtPath:filePath])
+    {
+        return -1;
+    }
+    
+    [self resetRecognizer];
+    
+    double recordDurationTime = DB_SINGLE_SENTENCE_BUFFER_DURATION_SECONDS;
+    
+    self.sizeToRead = self.rawDataRecognizer.sampleRate * recordDurationTime * 16 / 8;
+    
+    int status = [self.rawDataRecognizer startDataRecognitionWithDelegate:delegate];
+    
+    if (status != EVoiceRecognitionStartWorking) {
+        return status;
+    }
+    
+    NSThread *fileReadThread = [[NSThread alloc] initWithTarget:self
+                                                       selector:@selector(fileReadThreadFunc)
+                                                         object:nil];
+    self.fileReadThread = fileReadThread;
+    [self.fileReadThread start];
+    return 0;
+}
+
+
+- (void)resetRecognizer
+{
+    self.hasReadFileSize = 0;
+    if (self.fileReadThread) {
+        [self.fileReadThread cancel];
+        while (self.fileReadThread && ![self.fileReadThread isFinished])
+        {
+            [NSThread sleepForTimeInterval:0.1];
+        }
+    }
+}
+
+- (void)fileReadThreadFunc
+{
+    while ([self.fileReadThread isCancelled] == NO) {
+        //间隔一定时长获取语音，模拟人的正常语速
+        [NSThread sleepForTimeInterval:0.12];
+        
+        self.fileHandle = [NSFileHandle fileHandleForReadingAtPath:self.filePath];
+        [self.fileHandle seekToFileOffset:self.hasReadFileSize];
+        NSData* data = [self.fileHandle readDataOfLength:self.sizeToRead];
+        [self.fileHandle closeFile];
+        self.hasReadFileSize += [data length];
+        [self.rawDataRecognizer sendDataToRecognizer:data];
+        if ([data length] == 0) {
+            break;
+        }
+    }
+}
+
 
 //MARK: DBVoiceRecognizeDelgate
 
@@ -204,22 +281,6 @@ return parameters[@(code)];
     return dataString;
 }
 
-// MARK: 测试代码
-
-- (void)randomOfVoiceRecognize {
-    if(@available(iOS 10.0 ,*)) {
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:[self randomOfTime] repeats:YES block:^(NSTimer * _Nonnull timer) {
-            [self startRecognize];
-        }];
-    }
-}
-
-- (NSInteger)randomOfTime {
-    NSInteger number =arc4random() %80+5;
-    NSLog(@"number %@",@(number));
-    return number;
-}
-
 - (DBFileRecognizer *)fileRecognizer {
     if (!_fileRecognizer) {
         NSString *filePath = [self getPcmFilePathWithFileName:recordFileName];
@@ -227,6 +288,14 @@ return parameters[@(code)];
     }
     return _fileRecognizer;
 }
+
+-(DBRawDataRecognizer *)rawDataRecognizer {
+    if (!_rawDataRecognizer) {
+        _rawDataRecognizer = [[DBRawDataRecognizer alloc]initRecognizerWithSampleRate:DBAudioSampleRate16K];
+    }
+    return _rawDataRecognizer;
+}
+
 
 
 /*
