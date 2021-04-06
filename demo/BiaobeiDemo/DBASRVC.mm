@@ -3,7 +3,7 @@
 //  BiaobeiDemo
 //
 //  Created by 李明辉 on 2020/9/21.
-//  Copyright © 2020 biaobei. All rights reserved.
+//  Copyright BiaoBei © 2020 biaobei. All rights reserved.
 //
 
 #import "DBASRVC.h"
@@ -13,6 +13,8 @@
 static NSString * recordFileName = @"record";
 
 @interface DBASRVC ()<DBVoiceRecognizeDelgate>
+
+@property (nonatomic, strong)DBRecognitionManager * recognitionManager;
 
 /// 文件识别器
 @property(nonatomic,strong)DBFileRecognizer * fileRecognizer;
@@ -37,26 +39,33 @@ static NSString * recordFileName = @"record";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.client = [DBRecognitionManager sharedInstance];
 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *ASRClientId = [defaults valueForKey:@"ASRclientId"];
+    NSString *ASRClientSecret = [defaults valueForKey:@"ASRclientSecret"];
+    
+    self.recognitionManager = [DBRecognitionManager sharedInstance];
+    [self.recognitionManager setupClientId:ASRClientId clientSecret:ASRClientSecret failureHandler:^(BOOL ret, NSString * _Nonnull message) {
+        if (ret) {
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setValue:ASRClientId forKey:@"ASRclientId"];
+            [userDefaults setValue:ASRClientId forKey:@"ASRclientSecret"];
+            [userDefaults synchronize];
+            NSLog(@"鉴权成功");
+
+        }else {
+            NSLog(@"鉴权失败，ret:%@,message:%@",@(ret),message);
+        }
+    }];
+    
     self.recognitionManager.timeOut = 15;
     self.recognitionManager.log = YES;
-//    [self.recognitionManager setupClientId:@"3187ba62-e58d-4bf7-b7be-71252b6d4612" clientSecret:@"MmMzNTA2YTMtZjUyOC00MjcxLTg5ZTItMGMxNjQxOGM4ZGVm" failureHandler:^(BOOL ret, NSString * _Nonnull message) {
-//        if (ret) {
-//            NSLog(@"鉴权成功");
-//        }else {
-//            NSLog(@"鉴权失败");
-//        }
-//    }];
-
-    // 私有化部署
-//    [self.recognitionManager setupPrivateDeploymentURL:@"ws://192.168.1.21:9009"];
-//    [self.recognitionManager setupPrivateDeploymentURL:@"wss://asr.data-baker.com/"];
 
     self.pcmIndex = 0;
     self.recordData = [NSMutableData data];
     [self addBorderOfView:self.resultTextView];
     [self addBorderOfView:self.statusTextView];
+    
 }
 
 //开始识别
@@ -70,7 +79,6 @@ static NSString * recordFileName = @"record";
     self.pcmIndex= 0;
     self.statusTextView.text = @"";
     self.resultTextView.text = @"";
-    //    [self.client setParamsKey:@"add_pct" paramsValue:@1];
     
     NSInteger ret = [self.recognitionManager startVoiceRecognition:self];
     

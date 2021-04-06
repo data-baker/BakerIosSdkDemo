@@ -3,19 +3,17 @@
 //  WebSocketDemo
 //
 //  Created by linxi on 19/11/6.
-//  Copyright © 2017年 newbike. All rights reserved.
+//  Copyright BiaoBei © 2017年 newbike. All rights reserved.
 //
 
 #import "DBTTSVC.h"
 #import <DBFlowTTS/DBSynthesizerManager.h>
 #import <DBCommon/DBSynthesisPlayer.h>
 
-NSString * textViewText = @"标贝科技交互提供智能语音整体解决方案和数据服务 近期，天津市宝坻区某百货大楼内部，10%的酒精相继出现了5例新型冠状病毒感染的肺炎病例。这几个病例都没有去过武汉，也没有接触过确诊病例，而且从前三个病例发病时的情况看，似乎找不到到任何流行病学上的关联性。他们是怎么发病的？发病前有哪些情况是可以溯源？2月2日，天津市疾控中心传染病预防控制室主任张颖在发布会上，针对这起聚集性暴发的疫情进行了全程脱稿的“福尔摩斯式”分析，谜底层层被揭开，而这背后，给大家的却是一个深刻的警示！ 我们再来复盘一下—— 第1个病例：";// 百货大楼小家电区销售人员无武汉的流行病学史，无外出经历，也没有接触过确诊病例或疑似病例1月22日发热，商场26日春节停业。该售货员发病之后连续4天都在没有发热门诊的社区门诊看病。期间，她持续高热，自己购买药物在家中处理。31日到天津宝坻区医院的发热门诊就诊。最终被天津市疾病预防控制中心确认为确诊病例。源？2月2日，天津市疾控中心传染病预防控制室主任张颖在发布会上，针对这起聚集性暴发的疫情进行了全程脱稿的“福尔摩斯式”分析，谜底层层被揭开，而这背后，给大家的却是一个深刻的警示！ 我们再来复盘一下—— 第1个病例： 百货大楼小家电区销售人员无武汉的流行病学史，无外出经历，也没有接触过确诊病例或疑似病例1月22日发热，商场26日春节停业。该售货员发病之后连续4天都在没有发热门诊的社区门诊看病。期间，她持续高热，自己购买药物在家中处理。31日到天津宝坻区医院的发热门诊就诊。最终被天津市疾病预防控制中心确认为确诊病例。";
+NSString * textViewText = @"标贝（北京）科技有限公司专注于智能语音交互，包括语音合成整体解决方案，并提供语音合成、语音识别、图像识别等人工智能数据服务 。帮助客户实现数据价值，以推动技术、应用和产业的创新 。帮助企业盘活大数据资源，挖掘数据中有价值的信息  。主要提供智能语音交互相关服务，包括语音合成整体解决方案，以及语音合成、语音识别、图像识别等人工智能数据服务。 标贝科技在范围内有数据采集、处理团队，可以满足在不同地区收集数据的需求。以语音数据为例，可采集、加工普通话、英语、粤语、日语、韩语及方言等各类数据，以支持客户进行语音合成或者语音识别系统的研发工作。";
 
 @interface DBTTSVC ()<DBSynthesizerManagerDelegate,DBSynthesisPlayerDelegate,UITextViewDelegate>
 /// 合成管理类
-//@property(nonatomic,strong)DBSynthesizerManager * synthesizerManager;
-/// 合成需要的参数
 @property(nonatomic,strong)DBSynthesizerRequestParam * synthesizerPara;
 /// 展示文本的textView
 @property (weak, nonatomic) IBOutlet UITextView *textView;
@@ -27,6 +25,9 @@ NSString * textViewText = @"标贝科技交互提供智能语音整体解决方�
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 /// 展示回调状态
 @property (weak, nonatomic) IBOutlet UITextView *displayTextView;
+
+@property(nonatomic,strong)DBSynthesizerManager * synthesizerManager;
+
 
 @end
 
@@ -43,28 +44,33 @@ NSString * textViewText = @"标贝科技交互提供智能语音整体解决方�
     [self addBorderOfView:self.displayTextView];
     self.textView.text = textViewText;
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *TTSclientId = [defaults valueForKey:@"TTSclientId"];
+    NSString *TTSclientSecret = [defaults valueForKey:@"TTSclientSecret"];
     
-//    _synthesizerManager = [DBSynthesizerManager instance];
+    _synthesizerManager = [[DBSynthesizerManager alloc]init];
+// MARK: ---------------- 1.公有云设置ClientId和ClientSecret; 2.私有云设置setupPrivateDeploymentURL：的URL来进行鉴权
+    // TODO: 请设置ClientId和ClientSecret 处理回调
+    [_synthesizerManager setupClientId:TTSclientId clientSecret:TTSclientSecret handler:^(BOOL ret, NSString * _Nonnull message) {
+        NSLog(@"ret:%@,message:%@",@(ret),message);
+        if (ret) {
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setValue:TTSclientId forKey:@"TTSclientId"];
+            [userDefaults setValue:TTSclientSecret forKey:@"TTSclientSecret"];
+            [userDefaults synchronize];
+            NSLog(@"鉴权成功");
+        }
+    }];
+
     //设置打印日志
     _synthesizerManager.log = NO;
     _synthesizerManager.delegate = self;
-    //TODO: 如果使用私有化部署,按如下方式设置URL,否则设置setupClientId：clientSecret：的方法进行授权
-//   [_synthesizerManager setupPrivateDeploymentURL:@"ws://192.168.1.19:19009"];
-    
-//    [_synthesizerManager setupClientId:@"e2d17fce-f69a-4b78-bbe5-7fef824a77c2" clientSecret:@"ZTZlOTMyMzAtMThlZS00M2ZjLWJhMTktYTQ2NjBhZTE3Yzk0" handler:^(BOOL ret, NSString *message) {
-//        if (ret) {
-//            NSLog(@"鉴权成功");
-//        }else {
-//            NSLog(@"鉴权失败");
-//        }
-//    }];
+
     // 设置播放器
     _synthesisDataPlayer = [[DBSynthesisPlayer alloc]init];
     _synthesisDataPlayer.delegate = self;
     // 将初始化的播放器给合成器持有，合成器会持有并回调数据给player
     self.synthesizerManager.synthesisDataPlayer = self.synthesisDataPlayer;
-    
-    
 }
 
 // MARK: IBActions

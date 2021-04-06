@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 @class DBSynthesizerManager;
 @interface DBTTSNoPlayer : UIViewController
 
-@property(nonatomic,strong)DBSynthesizerManager * synthesizerManager;
 
 @end
 

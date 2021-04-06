@@ -3,12 +3,12 @@
 //  BiaobeiDemo
 //
 //  Created by 李明辉 on 2020/10/19.
-//  Copyright © 2020 biaobei. All rights reserved.
+//  Copyright BiaoBei © 2020 biaobei. All rights reserved.
 //
 
 #import "DBTTSType.h"
-#import "DBTTSNoPlayer.h"
 #import "DBTTSVC.h"
+#import "DBTTSNoPlayer.h"
 
 @interface DBTTSType ()
 
@@ -22,15 +22,14 @@
     self.title = @"语音合成";
 }
 - (IBAction)noPlayer:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    DBTTSNoPlayer *vc = [storyboard instantiateViewControllerWithIdentifier:@"DBTTSNoPlayer"];
-    vc.synthesizerManager = self.synthesizerManager;
-    [self.navigationController pushViewController:vc animated:YES];
+    UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DBTTSNoPlayer* tts = [secondStoryBoard instantiateViewControllerWithIdentifier:@"DBTTSNoPlayer"];
+    [self.navigationController pushViewController:tts animated:YES];
+    
 }
 - (IBAction)havePlayer:(id)sender {
     UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DBTTSVC* tts = [secondStoryBoard instantiateViewControllerWithIdentifier:@"ttsDemo"];
-    tts.synthesizerManager = self.synthesizerManager;
     [self.navigationController pushViewController:tts animated:YES];
 }
 

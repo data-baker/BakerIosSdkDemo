@@ -3,7 +3,7 @@
 //  BiaobeiDemo
 //
 //  Created by 李明辉 on 2020/8/19.
-//  Copyright © 2020 biaobei. All rights reserved.
+//  Copyright BiaoBei © 2020 biaobei. All rights reserved.
 //
 
 #import "DBAuthorizationVC.h"
@@ -11,6 +11,8 @@
 #import "DBTTSType.h"
 #import <DBASRFramework/DBRecognitionManager.h>
 #import "DBASRVC.h"
+#import "XCHudHelper.h"
+
 @interface DBAuthorizationVC ()
 @property (weak, nonatomic) IBOutlet UITextField *clientIdText;
 @property (weak, nonatomic) IBOutlet UITextField *clientSecretText;
@@ -29,7 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+ 
     
     self.title = @"授权";
     
@@ -62,8 +65,12 @@
         return;
     }
     
-    self.synthesizerManager = [[DBSynthesizerManager alloc]init];;
+    self.synthesizerManager = [[DBSynthesizerManager alloc]init];
+    [[XCHudHelper sharedInstance] showHudOnView:self.view caption:@"" image:nil acitivity:YES autoHideTime:0];
+    
     [self.synthesizerManager setupClientId:self.clientIdText.text clientSecret:self.clientSecretText.text handler:^(BOOL ret, NSString *message) {
+        [[XCHudHelper sharedInstance] hideHud];
+
         if (ret) {
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             [userDefaults setValue:self.clientIdText.text forKey:@"TTSclientId"];
@@ -72,7 +79,6 @@
             NSLog(@"鉴权成功");
             UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             DBTTSType* tts = [secondStoryBoard instantiateViewControllerWithIdentifier:@"DBTTSType"];
-            tts.synthesizerManager = self.synthesizerManager;
             [self.navigationController pushViewController:tts animated:YES];
 
         }else {
@@ -86,11 +92,12 @@
     if (self.clientIdText.text.length <= 0 || self.clientSecretText.text.length <= 0) {
         return;
     }
-    
-    
-    
     self.recognitionManager = [DBRecognitionManager sharedInstance];
+    [[XCHudHelper sharedInstance] showHudOnView:self.view caption:@"" image:nil acitivity:YES autoHideTime:0];
+
     [self.recognitionManager setupClientId:self.clientIdText.text clientSecret:self.clientSecretText.text failureHandler:^(BOOL ret, NSString * _Nonnull message) {
+        [[XCHudHelper sharedInstance] hideHud];
+
         if (ret) {
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             [userDefaults setValue:self.clientIdText.text forKey:@"ASRclientId"];
@@ -99,7 +106,6 @@
             NSLog(@"鉴权成功");
             UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             DBASRVC* asr = [secondStoryBoard instantiateViewControllerWithIdentifier:@"asrDemo"];
-            asr.recognitionManager = self.recognitionManager;
             [self.navigationController pushViewController:asr animated:YES];
         }else {
             self.errorLab.hidden = NO;

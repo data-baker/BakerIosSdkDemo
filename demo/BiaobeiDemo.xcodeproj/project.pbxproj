@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3524C442261C604700EEDFB6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3524C43E261C604700EEDFB6 /* MBProgressHUD.m */; };
+		3524C443261C604700EEDFB6 /* XCHudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3524C43F261C604700EEDFB6 /* XCHudHelper.m */; };
+		3524C449261C625B00EEDFB6 /* DBTTSNoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3524C447261C625B00EEDFB6 /* DBTTSNoPlayer.m */; };
+		5688BCFFCC309E858C957643 /* libPods-BiaobeiDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25742E87401636DE486AAEEF /* libPods-BiaobeiDemo.a */; };
 		8B2806D025109920003725DD /* DBTTSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2806CF25109920003725DD /* DBTTSVC.m */; };
-		8B46E3DC253D7FD500FB9B44 /* PCMDataPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B46E3DA253D7FD500FB9B44 /* PCMDataPlayer.m */; };
 		8B46E3DF253DBF2200FB9B44 /* DBTTSType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B46E3DE253DBF2200FB9B44 /* DBTTSType.m */; };
-		8B46E3E2253DC0FD00FB9B44 /* DBTTSNoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B46E3E1253DC0FD00FB9B44 /* DBTTSNoPlayer.m */; };
-		8B68BA772534374D004EE66D /* DBCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B68BA762534374D004EE66D /* DBCommon.framework */; };
-		8B68BA7925343867004EE66D /* DBFlowTTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B68BA7825343867004EE66D /* DBFlowTTS.framework */; };
-		8B68BA7B253440BA004EE66D /* DBASRFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B68BA7A253440BA004EE66D /* DBASRFramework.framework */; };
 		8BA4562C24ED04A700798B1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA4562B24ED04A700798B1F /* AppDelegate.m */; };
 		8BA4563224ED04A700798B1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA4563124ED04A700798B1F /* ViewController.m */; };
 		8BA4563524ED04A700798B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BA4563324ED04A700798B1F /* Main.storyboard */; };
@@ -25,17 +24,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25742E87401636DE486AAEEF /* libPods-BiaobeiDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BiaobeiDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3524C43E261C604700EEDFB6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		3524C43F261C604700EEDFB6 /* XCHudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCHudHelper.m; sourceTree = "<group>"; };
+		3524C440261C604700EEDFB6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		3524C441261C604700EEDFB6 /* XCHudHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCHudHelper.h; sourceTree = "<group>"; };
+		3524C447261C625B00EEDFB6 /* DBTTSNoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTTSNoPlayer.m; sourceTree = "<group>"; };
+		3524C448261C625B00EEDFB6 /* DBTTSNoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTTSNoPlayer.h; sourceTree = "<group>"; };
+		400A5701E8BB491C7DFBAFED /* Pods-BiaobeiDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiaobeiDemo.release.xcconfig"; path = "Target Support Files/Pods-BiaobeiDemo/Pods-BiaobeiDemo.release.xcconfig"; sourceTree = "<group>"; };
+		8A317AF42956632C482CA8F0 /* Pods-BiaobeiDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiaobeiDemo.debug.xcconfig"; path = "Target Support Files/Pods-BiaobeiDemo/Pods-BiaobeiDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		8B2806CE25109920003725DD /* DBTTSVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTTSVC.h; sourceTree = "<group>"; };
 		8B2806CF25109920003725DD /* DBTTSVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTTSVC.m; sourceTree = "<group>"; };
-		8B46E3DA253D7FD500FB9B44 /* PCMDataPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCMDataPlayer.m; sourceTree = "<group>"; };
-		8B46E3DB253D7FD500FB9B44 /* PCMDataPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCMDataPlayer.h; sourceTree = "<group>"; };
 		8B46E3DD253DBF2200FB9B44 /* DBTTSType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTTSType.h; sourceTree = "<group>"; };
 		8B46E3DE253DBF2200FB9B44 /* DBTTSType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTTSType.m; sourceTree = "<group>"; };
-		8B46E3E0253DC0FD00FB9B44 /* DBTTSNoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTTSNoPlayer.h; sourceTree = "<group>"; };
-		8B46E3E1253DC0FD00FB9B44 /* DBTTSNoPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBTTSNoPlayer.m; sourceTree = "<group>"; };
-		8B68BA762534374D004EE66D /* DBCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBCommon.framework; sourceTree = "<group>"; };
-		8B68BA7825343867004EE66D /* DBFlowTTS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBFlowTTS.framework; sourceTree = "<group>"; };
-		8B68BA7A253440BA004EE66D /* DBASRFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBASRFramework.framework; sourceTree = "<group>"; };
 		8BA4562724ED04A700798B1F /* BiaobeiDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiaobeiDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BA4562A24ED04A700798B1F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8BA4562B24ED04A700798B1F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -57,23 +58,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B68BA7925343867004EE66D /* DBFlowTTS.framework in Frameworks */,
-				8B68BA772534374D004EE66D /* DBCommon.framework in Frameworks */,
-				8B68BA7B253440BA004EE66D /* DBASRFramework.framework in Frameworks */,
+				5688BCFFCC309E858C957643 /* libPods-BiaobeiDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		251A9BADBD2B1A6B241C5D69 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8A317AF42956632C482CA8F0 /* Pods-BiaobeiDemo.debug.xcconfig */,
+				400A5701E8BB491C7DFBAFED /* Pods-BiaobeiDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3524C43D261C604700EEDFB6 /* XCToast */ = {
+			isa = PBXGroup;
+			children = (
+				3524C43E261C604700EEDFB6 /* MBProgressHUD.m */,
+				3524C43F261C604700EEDFB6 /* XCHudHelper.m */,
+				3524C440261C604700EEDFB6 /* MBProgressHUD.h */,
+				3524C441261C604700EEDFB6 /* XCHudHelper.h */,
+			);
+			path = XCToast;
+			sourceTree = "<group>";
+		};
 		8BA4561E24ED04A700798B1F = {
 			isa = PBXGroup;
 			children = (
-				8B68BA7A253440BA004EE66D /* DBASRFramework.framework */,
-				8B68BA7825343867004EE66D /* DBFlowTTS.framework */,
-				8B68BA762534374D004EE66D /* DBCommon.framework */,
 				8BA4562924ED04A700798B1F /* BiaobeiDemo */,
 				8BA4562824ED04A700798B1F /* Products */,
+				251A9BADBD2B1A6B241C5D69 /* Pods */,
+				EC891376F371B514F7222007 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,12 +114,10 @@
 				8BA4564424ED190000798B1F /* DBAuthorizationVC.m */,
 				8B46E3DD253DBF2200FB9B44 /* DBTTSType.h */,
 				8B46E3DE253DBF2200FB9B44 /* DBTTSType.m */,
-				8B46E3E0253DC0FD00FB9B44 /* DBTTSNoPlayer.h */,
-				8B46E3E1253DC0FD00FB9B44 /* DBTTSNoPlayer.m */,
+				3524C448261C625B00EEDFB6 /* DBTTSNoPlayer.h */,
+				3524C447261C625B00EEDFB6 /* DBTTSNoPlayer.m */,
 				8B2806CE25109920003725DD /* DBTTSVC.h */,
 				8B2806CF25109920003725DD /* DBTTSVC.m */,
-				8B46E3DB253D7FD500FB9B44 /* PCMDataPlayer.h */,
-				8B46E3DA253D7FD500FB9B44 /* PCMDataPlayer.m */,
 				8BFF76FC2518997B006E7141 /* DBASRVC.h */,
 				8BFF76FD2518997B006E7141 /* DBASRVC.mm */,
 				8BA4563324ED04A700798B1F /* Main.storyboard */,
@@ -109,8 +125,17 @@
 				8BA4563824ED04AB00798B1F /* LaunchScreen.storyboard */,
 				8BA4563B24ED04AB00798B1F /* Info.plist */,
 				8BA4563C24ED04AB00798B1F /* main.m */,
+				3524C43D261C604700EEDFB6 /* XCToast */,
 			);
 			path = BiaobeiDemo;
+			sourceTree = "<group>";
+		};
+		EC891376F371B514F7222007 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25742E87401636DE486AAEEF /* libPods-BiaobeiDemo.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +145,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BA4564024ED04AB00798B1F /* Build configuration list for PBXNativeTarget "BiaobeiDemo" */;
 			buildPhases = (
+				5E3E8060FE9F9CF7E98035DB /* [CP] Check Pods Manifest.lock */,
 				8BA4562324ED04A700798B1F /* Sources */,
 				8BA4562424ED04A700798B1F /* Frameworks */,
 				8BA4562524ED04A700798B1F /* Resources */,
@@ -178,6 +204,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5E3E8060FE9F9CF7E98035DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BiaobeiDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8BA4562324ED04A700798B1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -186,11 +237,12 @@
 				8BA4563224ED04A700798B1F /* ViewController.m in Sources */,
 				8B46E3DF253DBF2200FB9B44 /* DBTTSType.m in Sources */,
 				8BA4562C24ED04A700798B1F /* AppDelegate.m in Sources */,
-				8B46E3DC253D7FD500FB9B44 /* PCMDataPlayer.m in Sources */,
 				8BA4563D24ED04AB00798B1F /* main.m in Sources */,
 				8BFF76FE2518997B006E7141 /* DBASRVC.mm in Sources */,
 				8B2806D025109920003725DD /* DBTTSVC.m in Sources */,
-				8B46E3E2253DC0FD00FB9B44 /* DBTTSNoPlayer.m in Sources */,
+				3524C449261C625B00EEDFB6 /* DBTTSNoPlayer.m in Sources */,
+				3524C442261C604700EEDFB6 /* MBProgressHUD.m in Sources */,
+				3524C443261C604700EEDFB6 /* XCHudHelper.m in Sources */,
 				8BA4564524ED190000798B1F /* DBAuthorizationVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +381,7 @@
 		};
 		8BA4564124ED04AB00798B1F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A317AF42956632C482CA8F0 /* Pods-BiaobeiDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -352,6 +405,7 @@
 		};
 		8BA4564224ED04AB00798B1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 400A5701E8BB491C7DFBAFED /* Pods-BiaobeiDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
