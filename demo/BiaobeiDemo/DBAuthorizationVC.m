@@ -31,8 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.clientIdText.text = @"4020bc7b-13f2-4080-b406-45ad06e3ccb7";
-    self.clientSecretText.text = @"NGVjNmNmNmEtMmFkYS00YWIxLWFmYjEtYjE1MTNjYWYyN2E4";
+ 
  
     
     self.title = @"授权";
