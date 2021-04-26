@@ -8,7 +8,6 @@
 
 #import "DBTTSVC.h"
 #import <DBFlowTTS/DBSynthesizerManager.h>
-#import <DBCommon/DBSynthesisPlayer.h>
 
 NSString * textViewText = @"标贝（北京）科技有限公司专注于智能语音交互，包括语音合成整体解决方案，并提供语音合成、语音识别、图像识别等人工智能数据服务 。帮助客户实现数据价值，以推动技术、应用和产业的创新 。帮助企业盘活大数据资源，挖掘数据中有价值的信息  。主要提供智能语音交互相关服务，包括语音合成整体解决方案，以及语音合成、语音识别、图像识别等人工智能数据服务。 标贝科技在范围内有数据采集、处理团队，可以满足在不同地区收集数据的需求。以语音数据为例，可采集、加工普通话、英语、粤语、日语、韩语及方言等各类数据，以支持客户进行语音合成或者语音识别系统的研发工作。";
 
@@ -19,8 +18,6 @@ NSString * textViewText = @"标贝（北京）科技有限公司专注于智能�
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property(nonatomic,strong)NSMutableString * textString;
 
-/// 播放器设置
-@property(nonatomic,strong)DBSynthesisPlayer * synthesisDataPlayer;
 
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 /// 展示回调状态
@@ -64,13 +61,10 @@ NSString * textViewText = @"标贝（北京）科技有限公司专注于智能�
 
     //设置打印日志
     _synthesizerManager.log = NO;
+    // 设置合成的回调代理对象
     _synthesizerManager.delegate = self;
-
-    // 设置播放器
-    _synthesisDataPlayer = [[DBSynthesisPlayer alloc]init];
-    _synthesisDataPlayer.delegate = self;
-    // 将初始化的播放器给合成器持有，合成器会持有并回调数据给player
-    self.synthesizerManager.synthesisDataPlayer = self.synthesisDataPlayer;
+    // 设置合成播放的回调代理对象
+    _synthesizerManager.playerDelegate = self;
 }
 
 // MARK: IBActions
@@ -89,12 +83,12 @@ NSString * textViewText = @"标贝（北京）科技有限公司专注于智能�
     NSInteger code = [self.synthesizerManager setSynthesizerParams:self.synthesizerPara];
     if (code == 0) {
         // 开始合成
-        [self.synthesizerManager start];
+        [self.synthesizerManager startPlayNeedSpeaker:YES];
     }
 
 }
 - (IBAction)closeAction:(id)sender {
-    [self.synthesizerManager stop];
+    [self.synthesizerManager cancel];
     [self resetPlayState];
     self.displayTextView.text = @"";
 
@@ -104,27 +98,27 @@ NSString * textViewText = @"标贝（北京）科技有限公司专注于智能�
     if (self.playButton.isSelected) {
         self.playButton.selected = NO;
     }
-    [self.synthesisDataPlayer stopPlay];
 }
 
 - (IBAction)playAction:(UIButton *)sender {
-    if (self.synthesisDataPlayer.isReadyToPlay && self.synthesisDataPlayer.isPlayerPlaying == NO) {
-        [self.synthesisDataPlayer startPlay];
+    
+    if (self.synthesizerManager.isPlayerPlaying == NO) {
+        [self.synthesizerManager resumePlay];
     }else {
-        [self.synthesisDataPlayer pausePlay];
+        [self.synthesizerManager pausePlay];
     }
 }
 - (IBAction)currentPlayPosition:(id)sender {
-    NSString *position = [NSString stringWithFormat:@"播放进度 %@",[self timeDataWithTimeCount:self.synthesisDataPlayer.currentPlayPosition]];
+    NSString *position = [NSString stringWithFormat:@"播放进度 %@",[self timeDataWithTimeCount:self.synthesizerManager.currentPlayPosition]];
     [self appendLogMessage:position];
 }
 - (IBAction)getAudioLength:(id)sender {
-    NSString *audioLength = [NSString stringWithFormat:@"音频数据总长度 %@",[self timeDataWithTimeCount:self.synthesisDataPlayer.audioLength]];
+    NSString *audioLength = [NSString stringWithFormat:@"音频数据总长度 %@",[self timeDataWithTimeCount:self.synthesizerManager.audioLength]];
     [self appendLogMessage:audioLength];
 }
 - (IBAction)playState:(id)sender {
     NSString *message;
-    if (self.synthesisDataPlayer.isPlayerPlaying) {
+    if (self.synthesizerManager.isPlayerPlaying) {
         message = @"正在播放";
     }else {
         message = @"播放暂停";
@@ -177,7 +171,7 @@ NSString * textViewText = @"标贝（北京）科技有限公司专注于智能�
 
 - (void)readlyToPlay {
     [self appendLogMessage:@"准备就绪"];
-    [self playAction:self.playButton];
+    self.playButton.selected = YES;
 }
 
 - (void)playFinished {

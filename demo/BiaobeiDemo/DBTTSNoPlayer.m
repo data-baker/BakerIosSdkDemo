@@ -81,12 +81,12 @@ static NSString * text = @"标贝（北京）科技有限公司专注于智能�
     NSInteger code = [self.synthesizerManager setSynthesizerParams:self.synthesizerPara];
     if (code == 0) {
         // 开始合成
-        [self.synthesizerManager start];
+        [self.synthesizerManager startPlayNeedSpeaker:NO];
     }
 
 }
 - (IBAction)closeAction:(id)sender {
-    [self.synthesizerManager stop];
+    [self.synthesizerManager cancel];
     self.displayTextView.text = @"";
 }
 

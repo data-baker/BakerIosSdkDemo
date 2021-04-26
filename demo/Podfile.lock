@@ -2,15 +2,15 @@ PODS:
   - DBASRSDKLib (1.2.2):
     - DBCommonLib
   - DBCommonLib (2.2.5)
-  - DBXFlowTTSLib (2.2.4):
-    - DBCommonLib (~> 2.2.3)
+  - DBXFlowTTSLib (2.2.5):
+    - DBCommonLib (~> 2.2.5)
 
 DEPENDENCIES:
   - DBASRSDKLib (~> 1.2.2)
-  - DBXFlowTTSLib (~> 2.2.4)
+  - DBXFlowTTSLib (~> 2.2.5)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - DBASRSDKLib
     - DBCommonLib
     - DBXFlowTTSLib
@@ -18,8 +18,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   DBASRSDKLib: 1ed701711dc17ac483e8953ccd703a4e69ba6851
   DBCommonLib: b65dca8a9c0784525a906c23b7724c56f3a187f7
-  DBXFlowTTSLib: 85d0276caa28514e89baad5b38ee64d10b085b91
+  DBXFlowTTSLib: 1be71e12f9cfcbd8d9dd43821489e947b7fdb01e
 
-PODFILE CHECKSUM: f8bbbf4314768ed5ee1faf8e98d3cd6e840d75c9
+PODFILE CHECKSUM: 90a9e8ccbbcccf54cb353c45a5cb26f84301ce4e
 
 COCOAPODS: 1.10.1
