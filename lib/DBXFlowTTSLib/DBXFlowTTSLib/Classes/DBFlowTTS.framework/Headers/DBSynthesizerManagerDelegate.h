@@ -43,6 +43,8 @@ typedef NS_ENUM(NSUInteger,DBTTSErrorState) {
 - (void)onTaskFailed:(DBFailureModel *)failreModel;
 
 
+
+
 @end
 
 NS_ASSUME_NONNULL_END
